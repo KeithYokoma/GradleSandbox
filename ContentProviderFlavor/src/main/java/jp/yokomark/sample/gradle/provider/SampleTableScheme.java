@@ -12,7 +12,7 @@ public class SampleTableScheme implements BaseColumns{
     public static String buildCreateStatement() {
         return "CREATE TABLE " + TABLE_NAME + "(" +
                 _ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                COLUMN_NAME + " TEXT NOT NULL";
+                COLUMN_NAME + " TEXT NOT NULL)";
     }
 
     public static String buildDropStatement() {

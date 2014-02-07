@@ -17,7 +17,7 @@ import android.provider.BaseColumns;
  */
 public class SampleProvider extends ContentProvider {
     public static final String AUTHORITY = BuildConfig.PROVIDER_SAMPLE_AUTHORITY;
-    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/samples");
     private static final UriMatcher MATCHER;
     private static final String CONTENT_TYPE_SAMPLES = "vnd.android.cursor.dir/vnd.yokomark.flavor.sample";
     private static final String CONTENT_TYPE_SAMPLE = "vnd.android.cursor.item/vnd.yokomark.flavor.sample";
@@ -78,7 +78,7 @@ public class SampleProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         if (MATCHER.match(uri) != TYPE_SAMPLES) {
-            throw new IllegalArgumentException("unknown uri: " + uri);
+            throw new IllegalArgumentException("uri mismatch: " + uri);
         }
         SQLiteDatabase db = null;
         try {

@@ -4,5 +4,6 @@
     <string name="app_name">GradleSandbox</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="button_label_add_line">Add line</string>
 
 </resources>
