@@ -1,0 +1,47 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.1"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            zipAlign true
+            runProguard true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+//            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            zipAlign true
+            runProguard false
+//            signingConfig signingConfigs.debug
+        }
+    }
+    productFlavors {
+        staging {
+            proguardFile 'proguard-rules.txt'
+            packageName "jp.yokomark.sample.gradle.provider.stg"
+            buildConfigField "String", "PROVIDER_SAMPLE_AUTHORITY", "\"jp.yokomark.sample.gradle.provider.stg.SampleProvider\""
+        }
+
+        production {
+            proguardFile 'proguard-rules.txt'
+            packageName "jp.yokomark.sample.gradle.provider"
+            buildConfigField "String", "PROVIDER_SAMPLE_AUTHORITY", "\"jp.yokomark.sample.gradle.provider.SampleProvider\""
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:gridlayout-v7:19.0.1'
+    compile 'com.android.support:support-v4:19.0.1'
+    compile 'com.android.support:appcompat-v7:19.0.1'
+}
